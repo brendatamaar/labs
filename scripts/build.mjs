@@ -17,8 +17,10 @@ for (const app of apps) {
   if (!existsSync(cwd)) throw new Error(`apps/${app.slug} missing — run: git submodule update --init`)
   const sub = (s) => s.replaceAll('{slug}', app.slug)
   console.log(`\n=== ${app.slug} ===`)
-  if (app.install) execSync(sub(app.install), { cwd, stdio: 'inherit' })
-  execSync(sub(app.build), { cwd, stdio: 'inherit' })
+  // Per-app env (e.g. BASE_PATH for Next.js static export), with {slug} substituted
+  const env = { ...process.env, ...Object.fromEntries(Object.entries(app.env ?? {}).map(([k, v]) => [k, sub(v)])) }
+  if (app.install) execSync(sub(app.install), { cwd, stdio: 'inherit', env })
+  execSync(sub(app.build), { cwd, stdio: 'inherit', env })
   const out = join(cwd, app.out)
   if (!existsSync(join(out, 'index.html'))) throw new Error(`${app.slug}: no index.html in ${app.out}`)
   const target = join(dist, app.slug)

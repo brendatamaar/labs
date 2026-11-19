@@ -1,4 +1,23 @@
 [
-  { "slug": "jpeg-encoder", "install": "npm install", "build": "npm run build -- --base=/{slug}/", "out": "dist" },
-  { "slug": "md-editor", "install": "npm install", "build": "npm run build -- --base=/{slug}/", "out": "dist" }
+  {
+    "slug": "jpeg-encoder",
+    "install": "npm install",
+    "build": "npm run build -- --base=/{slug}/",
+    "out": "dist"
+  },
+  {
+    "slug": "md-editor",
+    "install": "npm install",
+    "build": "npm run build -- --base=/{slug}/",
+    "out": "dist"
+  },
+  {
+    "slug": "fullcalendar-shadcn",
+    "install": "npm install",
+    "build": "npm run build",
+    "out": "out",
+    "env": {
+      "BASE_PATH": "/{slug}"
+    }
+  }
 ]

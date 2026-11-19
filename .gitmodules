@@ -4,3 +4,6 @@
 [submodule "apps/md-editor"]
 	path = apps/md-editor
 	url = https://github.com/brendatamaar/md-editor
+[submodule "apps/fullcalendar-shadcn"]
+	path = apps/fullcalendar-shadcn
+	url = https://github.com/brendatamaar/fullcalendar-shadcn
