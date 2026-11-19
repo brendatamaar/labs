@@ -135,6 +135,9 @@ main {
 .icon-btn.home {
   margin-left: -12px;
 }
+.back-label {
+  font-size: 14px;
+}
 .icon-btn.theme {
   margin-right: -8px;
 }
