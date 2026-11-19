@@ -26,6 +26,8 @@ for (const app of apps) {
   const target = join(dist, app.slug)
   rmSync(target, { recursive: true, force: true })
   cpSync(out, target, { recursive: true })
+  // Big generated files that can't live in the app repo (e.g. map data, chunked under 25 MiB) are copied in from labs/data/<slug>
+  if (app.data) cpSync(join(root, sub(app.data)), target, { recursive: true })
 }
 
 // Shared design tokens, fonts and favicon: served at /_shared/ for the index and every app.

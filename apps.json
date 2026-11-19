@@ -19,5 +19,12 @@
     "env": {
       "BASE_PATH": "/{slug}"
     }
+  },
+  {
+    "slug": "gmaps-simulation",
+    "install": "pnpm install --frozen-lockfile",
+    "build": "pnpm exec vite build --base=/{slug}/",
+    "out": "dist-web",
+    "data": "data/{slug}"
   }
 ]

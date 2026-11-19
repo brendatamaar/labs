@@ -1,0 +1,28 @@
+{
+  "graph.bin": {
+    "size": 49533634,
+    "parts": [
+      "graph.bin.00",
+      "graph.bin.01",
+      "graph.bin.02"
+    ]
+  },
+  "ch.bin": {
+    "size": 90366008,
+    "parts": [
+      "ch.bin.00",
+      "ch.bin.01",
+      "ch.bin.02",
+      "ch.bin.03",
+      "ch.bin.04"
+    ]
+  },
+  "alt.bin": {
+    "size": 58559152,
+    "parts": [
+      "alt.bin.00",
+      "alt.bin.01",
+      "alt.bin.02"
+    ]
+  }
+}

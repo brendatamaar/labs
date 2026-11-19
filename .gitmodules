@@ -7,3 +7,6 @@
 [submodule "apps/fullcalendar-shadcn"]
 	path = apps/fullcalendar-shadcn
 	url = https://github.com/brendatamaar/fullcalendar-shadcn
+[submodule "apps/gmaps-simulation"]
+	path = apps/gmaps-simulation
+	url = https://github.com/brendatamaar/gmaps-simulation.git
