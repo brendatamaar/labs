@@ -1,21 +1,8 @@
 /* Shared design tokens + base for every labs page. Mirrors the portfolio (brendatama.dev):
    one 704px column of plain text, dark-first, Plus Jakarta Sans.
    Apps can link it as /_shared/folio.css and use the variables below. */
+@import url('./fonts.css');
 
-@font-face {
-  font-family: 'Plus Jakarta Sans';
-  font-style: normal;
-  font-display: swap;
-  font-weight: 400;
-  src: url('./fonts/plus-jakarta-sans-latin-400-normal.woff2') format('woff2');
-}
-@font-face {
-  font-family: 'Plus Jakarta Sans';
-  font-style: normal;
-  font-display: swap;
-  font-weight: 500;
-  src: url('./fonts/plus-jakarta-sans-latin-500-normal.woff2') format('woff2');
-}
 
 :root {
   color-scheme: dark;
