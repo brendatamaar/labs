@@ -17,12 +17,18 @@
     return root.dataset.theme || (mq.matches ? 'light' : 'dark')
   }
 
+  var WWW = 'https://www.brendatama.dev'
+  var RESUME = WWW + '/Brendatama%20Akbar%20(2026)%20-%20English.pdf'
+
+  // Same header as www.brendatama.dev: home icon left; Writing, Labs, Resume and the theme toggle right.
   var HTML =
     '<header class="site-header">' +
-    '<a class="icon-btn home" href="' + HOME + '" aria-label="Labs, back to the index">' +
-    '<svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg>' +
-    '<span class="nav-link back-label">Labs</span></a>' +
+    '<a class="icon-btn home" href="' + WWW + '/" aria-label="Brendatama Akbar Ramadan, home">' +
+    '<svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 11.5 12 4l9 7.5"/><path d="M5.5 10v9.5h13V10"/><path d="M10 19.5v-5h4v5"/></svg></a>' +
     '<nav class="site-nav" aria-label="Site">' +
+    '<a class="nav-link" href="' + WWW + '/blog">Writing</a>' +
+    '<a class="nav-link" href="' + HOME + '">Labs</a>' +
+    '<a class="nav-link" href="' + RESUME + '" download>Resume</a>' +
     '<button type="button" class="icon-btn theme" data-labs-theme>' +
     '<svg class="sun" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2.5v2.2M12 19.3v2.2M2.5 12h2.2M19.3 12h2.2M5.3 5.3l1.6 1.6M17.1 17.1l1.6 1.6M5.3 18.7l1.6-1.6M17.1 6.9l1.6-1.6"/></svg>' +
     '<svg class="moon" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 14.2A8 8 0 1 1 9.8 4a6.4 6.4 0 0 0 10.2 10.2z"/></svg>' +

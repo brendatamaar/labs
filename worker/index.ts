@@ -68,6 +68,8 @@ function renderIndex(labs: Lab[]): string {
     </a>
     <nav class="site-nav" aria-label="Site">
       <a class="nav-link" href="${HOME_URL}/blog">Writing</a>
+      <a class="nav-link" href="/">Labs</a>
+      <a class="nav-link" href="${HOME_URL}/Brendatama%20Akbar%20(2026)%20-%20English.pdf" download>Resume</a>
       <button type="button" id="theme" class="icon-btn theme" aria-label="Switch theme">
         <svg class="sun" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2.5v2.2M12 19.3v2.2M2.5 12h2.2M19.3 12h2.2M5.3 5.3l1.6 1.6M17.1 17.1l1.6 1.6M5.3 18.7l1.6-1.6M17.1 6.9l1.6-1.6"/></svg>
         <svg class="moon" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 14.2A8 8 0 1 1 9.8 4a6.4 6.4 0 0 0 10.2 10.2z"/></svg>

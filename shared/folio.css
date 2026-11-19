@@ -135,11 +135,14 @@ main {
 .icon-btn.home {
   margin-left: -12px;
 }
-.back-label {
-  font-size: 14px;
-}
 .icon-btn.theme {
   margin-right: -8px;
+}
+.nav-link {
+  padding: 10px 0;
+}
+.nav-link + .nav-link {
+  margin-left: 8px;
 }
 .icon-btn:hover,
 .nav-link:hover {
