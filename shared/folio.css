@@ -1,0 +1,286 @@
+/* Shared design tokens + base for every labs page. Mirrors the portfolio (brendatama.dev):
+   one 704px column of plain text, dark-first, Plus Jakarta Sans.
+   Apps can link it as /_shared/folio.css and use the variables below. */
+
+@font-face {
+  font-family: 'Plus Jakarta Sans';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 400;
+  src: url('./fonts/plus-jakarta-sans-latin-400-normal.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'Plus Jakarta Sans';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 500;
+  src: url('./fonts/plus-jakarta-sans-latin-500-normal.woff2') format('woff2');
+}
+
+:root {
+  color-scheme: dark;
+  --font-sans: 'Plus Jakarta Sans', ui-sans-serif, system-ui, -apple-system, sans-serif;
+  --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', monospace;
+  --color-page: #131313;
+  --color-ink: #f5f5f5;
+  --color-body: #d4d4d4;
+  --color-quiet: #a1a1a1;
+  --color-leader: #404040;
+  --color-ring: #2a2a2a;
+  --color-raised: color-mix(in srgb, var(--color-ink) 6%, var(--color-page));
+  --color-pen: #8ea2ff;
+}
+/* Light when the OS asks for it (unless the toggle said dark), or when the toggle said light. */
+@media (prefers-color-scheme: light) {
+  :root:not([data-theme='dark']) {
+    color-scheme: light;
+    --color-page: #ffffff;
+    --color-ink: #171717;
+    --color-body: #404040;
+    --color-quiet: #737373;
+    --color-leader: #e5e5e5;
+    --color-ring: #e5e5e5;
+    --color-pen: #2f4fd8;
+  }
+}
+:root[data-theme='light'] {
+  color-scheme: light;
+  --color-page: #ffffff;
+  --color-ink: #171717;
+  --color-body: #404040;
+  --color-quiet: #737373;
+  --color-leader: #e5e5e5;
+  --color-ring: #e5e5e5;
+  --color-pen: #2f4fd8;
+}
+
+* {
+  box-sizing: border-box;
+}
+html {
+  background: var(--color-page);
+}
+body {
+  margin: 0;
+  overflow-x: hidden;
+  background: var(--color-page);
+  color: var(--color-ink);
+  font: 400 16px/1.75 var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  transition: background-color 0.25s, color 0.25s;
+}
+a {
+  color: inherit;
+  text-decoration: none;
+}
+p,
+h1,
+h2 {
+  margin: 0;
+  font-weight: 400;
+}
+ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+:focus-visible {
+  outline: 2px solid var(--color-quiet);
+  outline-offset: 2px;
+  border-radius: 3px;
+}
+
+/* Page frame */
+.col {
+  max-width: 704px;
+  margin: 0 auto;
+  padding: 32px max(16px, env(safe-area-inset-right, 0px)) 0 max(16px, env(safe-area-inset-left, 0px));
+}
+.skip {
+  position: absolute;
+  top: -100px;
+  left: 16px;
+  z-index: 40;
+  background: var(--color-page);
+  padding: 6px 10px;
+  font-size: 14px;
+}
+.skip:focus {
+  top: 8px;
+}
+main {
+  display: flex;
+  flex-direction: column;
+  gap: 64px;
+  padding-top: 40px;
+}
+
+/* Header: home icon on the left, theme toggle on the right */
+.site-header {
+  display: flex;
+  min-height: 44px;
+  align-items: center;
+  justify-content: space-between;
+}
+.site-nav {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  color: var(--color-quiet);
+}
+.icon-btn,
+.nav-link {
+  display: inline-flex;
+  min-height: 44px;
+  align-items: center;
+  color: var(--color-quiet);
+  transition: color 0.15s;
+}
+.icon-btn {
+  min-width: 44px;
+  justify-content: center;
+  cursor: pointer;
+  background: transparent;
+  border: 0;
+  padding: 0 8px;
+}
+.icon-btn.home {
+  margin-left: -12px;
+}
+.icon-btn.theme {
+  margin-right: -8px;
+}
+.icon-btn:hover,
+.nav-link:hover {
+  color: var(--color-ink);
+}
+/* The toggle shows the theme you'd switch TO: a sun while dark, a moon while light. */
+.icon-btn .moon {
+  display: none;
+}
+@media (prefers-color-scheme: light) {
+  :root:not([data-theme='dark']) .icon-btn .sun {
+    display: none;
+  }
+  :root:not([data-theme='dark']) .icon-btn .moon {
+    display: block;
+  }
+}
+:root[data-theme='light'] .icon-btn .sun {
+  display: none;
+}
+:root[data-theme='light'] .icon-btn .moon {
+  display: block;
+}
+:root[data-theme='dark'] .icon-btn .sun {
+  display: block;
+}
+:root[data-theme='dark'] .icon-btn .moon {
+  display: none;
+}
+
+/* Section heading + lede */
+.heading {
+  margin-bottom: 6px;
+  font-size: 14px;
+  color: var(--color-quiet);
+}
+.lede {
+  margin-bottom: 10px;
+  font-size: 14px;
+  line-height: 1.7;
+  color: var(--color-quiet);
+}
+.empty {
+  font-size: 14px;
+  color: var(--color-quiet);
+}
+
+/* Rows: name, dotted leader, description */
+.rows li {
+  transition: opacity 0.3s ease;
+}
+.row {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 4px 0;
+  font-size: 14px;
+  line-height: 1.7;
+}
+.row .k {
+  min-width: 0;
+  color: var(--color-body);
+  transition: color 0.15s;
+}
+.row .leader {
+  min-width: 24px;
+  flex: 1;
+  transform: translateY(1px);
+  border-bottom: 1px dotted var(--color-leader);
+}
+.row .v {
+  max-width: 58%;
+  overflow: hidden;
+  text-align: right;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  color: var(--color-quiet);
+  transition: color 0.15s;
+}
+a.row:hover .k,
+a.row:focus-visible .k {
+  color: var(--color-ink);
+}
+a.row:hover .leader {
+  border-color: var(--color-quiet);
+}
+a.row:hover .v,
+a.row:focus-visible .v {
+  color: var(--color-body);
+}
+@media (hover: hover) and (pointer: fine) {
+  .rows:hover > li:not(:hover) {
+    opacity: 0.35;
+  }
+}
+@media (max-width: 640px) {
+  .row {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0;
+    padding: 6px 0;
+  }
+  .row .leader {
+    display: none;
+  }
+  .row .v {
+    max-width: 100%;
+    text-align: left;
+    white-space: normal;
+  }
+}
+
+/* Footer */
+.site-footer {
+  margin-top: 96px;
+  padding: 24px 16px 40px;
+  text-align: center;
+  font-size: 13px;
+  color: var(--color-quiet);
+}
+.site-footer a {
+  border-bottom: 1px solid var(--color-leader);
+  transition: border-color 0.15s, color 0.15s;
+}
+.site-footer a:hover {
+  color: var(--color-ink);
+  border-color: var(--color-ink);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    transition: none !important;
+  }
+}

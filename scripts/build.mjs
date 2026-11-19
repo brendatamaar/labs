@@ -26,6 +26,9 @@ for (const app of apps) {
   cpSync(out, target, { recursive: true })
 }
 
+// Shared design tokens, fonts and favicon: served at /_shared/ for the index and every app.
+cpSync(join(root, 'shared'), join(dist, '_shared'), { recursive: true })
+
 // Manifest for the portfolio CMS "import from labs" helper.
 import { writeFileSync } from 'node:fs'
 writeFileSync(join(dist, 'manifest.json'), JSON.stringify(apps.map(({ slug }) => ({ slug })), null, 2))
