@@ -98,9 +98,23 @@ function renderIndex(labs: Lab[]): string {
 </html>`
 }
 
+// Big data parts are named by content hash (graph.97cb917b.00): safe to cache for a year, in the browser and on the edge.
+const IMMUTABLE = /[/][A-Za-z0-9_-]+[.][0-9a-f]{8}[.][0-9]{2}$/
+
 export default {
-  async fetch(request: Request, env: Env): Promise<Response> {
+  async fetch(request: Request, env: Env, ctx: ExecutionContext): Promise<Response> {
     const url = new URL(request.url)
+
+    if (request.method === 'GET' && IMMUTABLE.test(url.pathname)) {
+      const cached = await caches.default.match(request)
+      if (cached) return cached
+      const res = await env.ASSETS.fetch(request)
+      if (!res.ok) return res
+      const out = new Response(res.body, res)
+      out.headers.set('cache-control', 'public, max-age=31536000, immutable')
+      ctx.waitUntil(caches.default.put(request, out.clone()))
+      return out
+    }
 
     if (url.pathname === '/' && request.method === 'GET') {
       return new Response(renderIndex(await loadLabs()), {

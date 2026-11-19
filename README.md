@@ -22,3 +22,8 @@ npx wrangler dev
 ## Update flow
 Push in an app repo → `notify-labs.yml` sends `repository_dispatch` → this repo pulls submodules, builds, deploys.
 Also runs every 6h and on push.
+
+### gmaps-simulation data
+`data/gmaps-simulation/` holds the app's generated map data (needs the 850 MB OSM extract, so it can't be rebuilt in CI).
+After re-running the app's `pnpm export:graph / export:ch / export:alt`, repack it (lossless, ~2x smaller, split in 8 MiB
+parts named by hash so the Worker can cache them forever): `node scripts/pack-data.mjs <app>/web/public data/gmaps-simulation`.
