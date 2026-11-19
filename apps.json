@@ -1,0 +1,4 @@
+[
+  { "slug": "jpeg-encoder", "install": "npm install", "build": "npm run build -- --base=/{slug}/", "out": "dist" },
+  { "slug": "md-editor", "install": "npm install", "build": "npm run build -- --base=/{slug}/", "out": "dist" }
+]

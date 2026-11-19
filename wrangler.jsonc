@@ -1,0 +1,11 @@
+{
+  "name": "labs",
+  "main": "worker/index.ts",
+  "compatibility_date": "2026-11-01",
+  "assets": {
+    "directory": "./dist",
+    "binding": "ASSETS",
+    "run_worker_first": true
+  },
+  "routes": [{ "pattern": "labs.brendatama.dev", "custom_domain": true }]
+}

@@ -1,0 +1,6 @@
+[submodule "apps/jpeg-encoder"]
+	path = apps/jpeg-encoder
+	url = https://github.com/brendatamaar/jpeg-encoder
+[submodule "apps/md-editor"]
+	path = apps/md-editor
+	url = https://github.com/brendatamaar/md-editor
