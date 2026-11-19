@@ -23,7 +23,7 @@
   {
     "slug": "gmaps-simulation",
     "install": "pnpm install --frozen-lockfile",
-    "build": "pnpm exec vite build --base=/{slug}/",
+    "build": "node node_modules/vite/bin/vite.js build --base=/{slug}/",
     "out": "dist-web",
     "data": "data/{slug}"
   }
